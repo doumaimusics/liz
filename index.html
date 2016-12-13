@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+	</head>
+	<style>
+		ul{width: 910px;height: 910px;}
+		ul li{
+			width: 300px;height: 300px;margin:2px 1px; float: left;box-sizing: border-box;border:1px solid #000;		}
+			.active{background: red;}
+	</style>
+	<body>
+		<input type="button" name="" id="" value="点击抽奖" />
+		<ul>
+			<li>一等奖</li>
+			<li>二等奖</li>
+			<li>三等奖</li>
+			<li>四等奖</li>
+			<li>五等奖</li>
+			<li>六等奖</li>
+			<li>七等奖</li>
+			<li>八等奖</li>
+			<li>九等奖</li>	
+		</ul>		
+		<script>			
+			$(function(){
+				var iNow = 0;
+				$('input').click(function(){
+					var step = parseInt(Math.random()*20+5);
+					var timer = setInterval(function(){
+						$('li').removeClass('active');
+						$('li').eq(iNow).addClass('active');
+						iNow++;
+						step--;
+						if(step==0){
+							alert('中奖了');
+							clearInterval(timer);
+						}
+						if(iNow==$('li').length){
+							iNow=0;
+						}
+					},100)
+				})
+			})
+		</script>
+	</body>
+</html>
